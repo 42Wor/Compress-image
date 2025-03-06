@@ -31,14 +31,22 @@ def compress_image_pillow(input_path, output_path, quality=85, optimize=True, fo
         return False
 
 
-
-# Example Usage:
+def output_image(format):
+    """Generate the output image path based on the format."""
+    input_image = "Assets/years.png"  # Replace with your image file
+    base_name = input_image.split('/')[-1].split('.')[0]  # Get the base name without extension
+    return f"output/{base_name}.{format.lower()}"
+'''# Example Usage:
 input_image = "Assets/years.png"  # Replace with your image file
-output_image = "output/{input_image}"
+output_image = f"output/{input_image.split('/')[-1]}"  # Correctly format the output path
+
+'''
 
 
-compress_image_pillow(input_image, output_image, quality=75, optimize=True)  # Compress to JPEG, good balance
-compress_image_pillow(input_image, output_image, quality=80, format="WEBP") # Compress to WebP (often better compression than JPEG)
-compress_image_pillow(input_image, output_image, quality=90)   # Compress PNG (lossless, quality parameter controls zlib compression level)
+input_image = "Assets/years.png"
+
+compress_image_pillow(input_image, output_image("JPEG"), quality=75, optimize=True)  # Compress to JPEG, good balance
+compress_image_pillow(input_image, output_image("WebP"), quality=80, format="WEBP") # Compress to WebP (often better compression than JPEG)
+compress_image_pillow(input_image, output_image("png"), quality=90)   # Compress PNG (lossless, quality parameter controls zlib compression level)
 # For PNG, use the compress_level parameter (0-9),  where 9 is maximum compression.  Quality is ignored for lossless formats like PNG
 #  img.save(output_path, compress_level=9) # For maximum PNG compression
