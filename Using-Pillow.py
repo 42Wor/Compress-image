@@ -33,13 +33,12 @@ def compress_image_pillow(input_path, output_path, quality=85, optimize=True, fo
 
 
 # Example Usage:
-input_image = "my_image.jpg"  # Replace with your image file
-output_image_jpg = "compressed_image.jpg"
-output_image_webp = "compressed_image.webp"
-output_image_png = "compressed_image.png"
+input_image = "Assets/years.png"  # Replace with your image file
+output_image = "output/{input_image}"
 
-compress_image_pillow(input_image, output_image_jpg, quality=75, optimize=True)  # Compress to JPEG, good balance
-compress_image_pillow(input_image, output_image_webp, quality=80, format="WEBP") # Compress to WebP (often better compression than JPEG)
-compress_image_pillow(input_image, output_image_png, quality=90)   # Compress PNG (lossless, quality parameter controls zlib compression level)
+
+compress_image_pillow(input_image, output_image, quality=75, optimize=True)  # Compress to JPEG, good balance
+compress_image_pillow(input_image, output_image, quality=80, format="WEBP") # Compress to WebP (often better compression than JPEG)
+compress_image_pillow(input_image, output_image, quality=90)   # Compress PNG (lossless, quality parameter controls zlib compression level)
 # For PNG, use the compress_level parameter (0-9),  where 9 is maximum compression.  Quality is ignored for lossless formats like PNG
 #  img.save(output_path, compress_level=9) # For maximum PNG compression
